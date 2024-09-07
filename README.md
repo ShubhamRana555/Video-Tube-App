@@ -6,5 +6,5 @@
 npm init  //To initialize the project and creating package.json file.
 npm i -D nodemon  //To install nodemon as a dev dependency.
 npm i express mongoose dotenv //To install express, mongoose and dotenv as a dependency.
-
+npm i cookie-parser cors
 ```
