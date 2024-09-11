@@ -14,6 +14,14 @@ app.use(express.urlencoded({extended: true, limit: "10kb"}));
 app.use(express.static("public"));
 app.use(cookieParser());
 
+// routes import 
+import userRouter from './routes/user.routes.js';
 
 
-export default app;
+// routes declaration
+app.use("/api/v1/users", userRouter)  // it will take control to user.routes.js file where actual routes are defined
+
+
+
+
+export {app};
