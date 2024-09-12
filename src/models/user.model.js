@@ -58,7 +58,7 @@ userSchema.pre(
             return next();
         }
 
-        this.password = bcrypt.hash(this.password, 10);
+        this.password = await bcrypt.hash(this.password, 10);
         next();
     }
 ) // It is a middleware function that runs just before the save() method. For example, user wrote a controller to save data, then we run this function just before saving the data to encrypt the password password.
