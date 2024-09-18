@@ -94,4 +94,34 @@ userSchema.methods.generateRefreshToken = function() {
     )
 }
 
+userSchema.methods.generateAccessToken = function() {
+    const payload = {
+        _id: this._id,
+        email: this.email,
+        username: this.username,
+        fullName: this.fullName,
+    };
+    const options = {
+        expiresIn: process.env.ACCESS_TOKEN_EXPIRY || '1h',
+    };
+    console.log("Payload for Access Token:", payload);
+    console.log("Options for Access Token:", options);
+
+    return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, options);
+};
+
+userSchema.methods.generateRefreshToken = function() {
+    const payload = {
+        _id: this._id,
+    };
+    const options = {
+        expiresIn: process.env.REFRESH_TOKEN_EXPIRY || '7d',
+    };
+    console.log("Payload for Refresh Token:", payload);
+    console.log("Options for Refresh Token:", options);
+
+    return jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, options);
+};
+
+
 export const User = mongoose.model("User", userSchema)
