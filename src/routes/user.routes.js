@@ -17,7 +17,7 @@ router.route("/register").post(
             maxCount: 1
         }
     ]), // injecting middleware just before 'registerUser' controller
-    registerUser
+    regist  erUser
 )
 
 router.route("/login").post(loginUser)
