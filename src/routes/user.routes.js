@@ -31,7 +31,7 @@ router.route("/current-user").get(verifyJWT,getCurrentUser)
 router.route("/update-account").patch(verifyJWT, updateAccountDetails) // using patch method to update the account details specifically
 
 router.route("/avatar").patch(verifyJWT, upload.single("avatar"), updateUserAvatar)
-router.route("/cover-image").patch(verifyJWT, upload.single("/coverImage"), updateUserCoverImage)
+router.route("/cover-image").patch(verifyJWT, upload.single("coverImage"), updateUserCoverImage)
 
 // we got {username} from params, so we have to name url exactly like we defined in params in controller
 router.route("/c/:username").get(verifyJWT, getUserChannelProfile)
